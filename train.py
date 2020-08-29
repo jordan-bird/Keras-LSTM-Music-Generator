@@ -221,5 +221,5 @@ def train(model, network_input_notes, network_input_offsets, network_input_durat
 	model.fit([network_input_notes, network_input_offsets, network_input_durations], [network_output_notes, network_output_offsets, network_output_durations], epochs=200, batch_size=256, callbacks=callbacks_list, verbose=1)
 
 if __name__ == '__main__':
-	#weights_name = 'weights-improvement-16-8.4427-bigger.hdf5'
+	#weights_name = 'my_weights_file.hdf5'
 	train_network()
