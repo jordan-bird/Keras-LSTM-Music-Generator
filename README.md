@@ -19,3 +19,14 @@ Thus, three tasks are trained. Classifying the next note, its offset, and its du
 # Model Diagram
 This is the best model I have found so far:
 ![LSTM Model Diagram](model_plot.png)
+
+
+# Training 
+Everything in this repo can be run as-is to train on classical piano pieces:
+
+1. Run train.py for a while until note/chord loss is below 1
+2. Set line 155 in generate-music.py to the name of the .HDF5 file that was last saved (the model weights)
+3. Run generate-music.py to generate a midi file from the model
+
+## Using your own data
+Change line 53 in train.py to specify where your .midi files are stored
