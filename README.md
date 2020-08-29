@@ -1,5 +1,5 @@
 # Keras LSTM Music Generator
-Generate music with LSTMs in Keras
+Learn to generate music with LSTM neural networks in Keras
 
 After reading Sigurður Skúli's towards data science article ['How to Generate Music using a LSTM Neural Network in Keras'](https://towardsdatascience.com/how-to-generate-music-using-a-lstm-neural-network-in-keras-68786834d4c5) - I was astounded at how well LSTM classification networks were at predicting notes and chords in a sequence, and ultimately then how they could generate really nice music. 
 
@@ -30,3 +30,15 @@ Everything in this repo can be run as-is to train on classical piano pieces:
 
 ## Using your own data
 Change line 53 in train.py to specify where your .midi files are stored
+
+# To Do
+1. Upload some more examples of music
+2. Try and experiment with smaller models that are quicker to train but still produce good results
+3. Try out some different loss functions, Adam seems best so far
+4. Add a fourth input and output branch for instrument classification and prediction for the note.
+5. Maybe experiment with adding a genre classification network branch so the model doesn't need curated data as input
+
+# Changing instruments
+I hope to update the model to learn to predict the instrument, but at the moment I just use https://onlinesequencer.net/ if I want to hear it played by something other than a piano
+
+You can train the network on any instrument, all it cares about are the notes and their offset and duration. But, that said, the network will set each note's instrument as piano. This can be changed via lines 265 and 282 which set notes and chords to piano respectively in generate-music.py
