@@ -27,6 +27,7 @@ Thus, three tasks are trained. Classifying the next note, its offset, and its du
 # Model Diagram
 This is the best model I have found so far:
 ![LSTM Model Diagram](model_plot.png)
+Note: the number of outputs for the three final layers differ depending on what was detected during parsing of the files. For example, if you parse 100 midi files consisting of only three chords, the notes_output layer will only have three outputs. Thus, depending on what kind of music you're training on, the number of softmax neurons will change dynamically. 
 
 
 # Training 
