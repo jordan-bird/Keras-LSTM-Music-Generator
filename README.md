@@ -1,6 +1,14 @@
 # Keras LSTM Music Generator
 Learn to generate music with LSTM neural networks in Keras
 
+# Requirements
+Python 3.x
+
+Keras and music21 
+
+GPU strongly recommended for training
+
+# Info
 After reading Sigurður Skúli's towards data science article ['How to Generate Music using a LSTM Neural Network in Keras'](https://towardsdatascience.com/how-to-generate-music-using-a-lstm-neural-network-in-keras-68786834d4c5) - I was astounded at how well LSTM classification networks were at predicting notes and chords in a sequence, and ultimately then how they could generate really nice music. 
 
 Sigurður's approach had some really nice and useful functions for parsing the data, creating dictionaries to translate between notes and class labels, and then using the trained model to generate pieces of music. 
