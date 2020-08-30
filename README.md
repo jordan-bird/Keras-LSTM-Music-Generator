@@ -48,6 +48,7 @@ I need to see what happens when the offset and duration problems are regression 
 3. Try out some different loss functions, Adam seems best so far
 4. Add a fourth input and output branch for instrument classification and prediction for the note.
 5. Maybe experiment with adding a genre classification network branch so the model doesn't need curated data as input
+6. Clean up the code, it's a bit messy in places
 
 # Changing instruments
 I hope to update the model to learn to predict the instrument, but at the moment I just use https://onlinesequencer.net/ if I want to hear it played by something other than a piano
