@@ -41,6 +41,8 @@ Everything in this repo can be run as-is to train on classical piano pieces:
 Change line 53 in train.py to specify where your .midi files are stored
 
 # To Do
+I need to see what happens when the offset and duration problems are regression with MSE. Currently, we do classification of a library of classes (ie. unique offsets and durations) detected from the dataset during Midi parsing
+
 1. Upload some more examples of music
 2. Try and experiment with smaller models that are quicker to train but still produce good results
 3. Try out some different loss functions, Adam seems best so far
