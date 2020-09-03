@@ -50,7 +50,7 @@ def get_notes():
 	offsets = []
 	durations = []
 
-	for file in glob.glob("classical-piano/*.mid"):
+	for file in glob.glob("classical-piano-type0/*.mid"):
 		midi = converter.parse(file)
 
 		print("Parsing %s" % file)
