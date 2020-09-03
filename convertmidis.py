@@ -8,8 +8,6 @@ import os
 directory = 'classical-piano'
 directoryNew = directory + '-type0/'
 
-
-
 for filename in os.listdir(directory):
 	if filename.endswith(".mid"):
 		print(filename)
