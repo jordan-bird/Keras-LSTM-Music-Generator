@@ -38,17 +38,19 @@ Everything in this repo can be run as-is to train on classical piano pieces:
 3. Run generate-music.py to generate a midi file from the model
 
 ## Using your own data
+Since most midis are multi-track (eg. 2x piano, left and right hand), and this model only supports one - run convertmidis.py to merge all tracks into one
+
 Change line 53 in train.py to specify where your .midi files are stored
 
 # To Do
 I need to see what happens when the offset and duration problems are regression with MSE. Currently, we do classification of a library of classes (ie. unique offsets and durations) detected from the dataset during Midi parsing
 
-1. Upload some more examples of music
-2. Try and experiment with smaller models that are quicker to train but still produce good results
-3. Try out some different loss functions, Adam seems best so far
-4. Add a fourth input and output branch for instrument classification and prediction for the note.
-5. Maybe experiment with adding a genre classification network branch so the model doesn't need curated data as input
-6. Clean up the code, it's a bit messy in places
+Enable multi-track training and prediction, currently we just merge all midi tracks into one
+Upload some more examples of music
+Try and experiment with smaller models that are quicker to train but still produce good results
+Try out some different loss functions, Adam seems best so far
+Maybe experiment with adding a genre classification network branch so the model doesn't need curated data as input
+Clean up the code, it's a bit messy in places
 
 # Changing instruments
 I hope to update the model to learn to predict the instrument, but at the moment I just use https://onlinesequencer.net/ if I want to hear it played by something other than a piano
