@@ -1,3 +1,6 @@
+# Merges all midi tracks into one
+# Useful for two-handed piano pieces - very bad for orchestras.
+
 from collections import defaultdict
 from mido import Message, MidiFile, MidiTrack, merge_tracks
 import os
