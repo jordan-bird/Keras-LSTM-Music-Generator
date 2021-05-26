@@ -7,17 +7,15 @@ from music21 import converter, instrument, note, chord
 from keras.models import Sequential
 from keras.layers import Dense
 from keras.layers import Dropout
-from keras.layers import LSTM
 from keras.layers import Activation
 from keras.layers import BatchNormalization as BatchNorm
 from keras.utils import np_utils
 from keras.callbacks import ModelCheckpoint
 
-from keras.layers import Bidirectional, CuDNNLSTM
+from keras.layers import Bidirectional, LSTM
 
 from keras.optimizers import Adam
 from keras.layers import concatenate
-from keras.layers import Merge
 from keras.layers import Input
 
 from keras import Model
@@ -137,7 +135,7 @@ def create_network(network_input_notes, n_vocab_notes, network_input_offsets, n_
 	
 	# Branch of the network that considers notes
 	inputNotesLayer = Input(shape=(network_input_notes.shape[1], network_input_notes.shape[2]))
-	inputNotes = CuDNNLSTM(
+	inputNotes = LSTM(
 		256,
 		input_shape=(network_input_notes.shape[1], network_input_notes.shape[2]),
 		return_sequences=True
@@ -146,7 +144,7 @@ def create_network(network_input_notes, n_vocab_notes, network_input_offsets, n_
 	
 	# Branch of the network that considers note offset
 	inputOffsetsLayer = Input(shape=(network_input_offsets.shape[1], network_input_offsets.shape[2]))
-	inputOffsets = CuDNNLSTM(
+	inputOffsets = LSTM(
 		256,
 		input_shape=(network_input_offsets.shape[1], network_input_offsets.shape[2]),
 		return_sequences=True
@@ -155,7 +153,7 @@ def create_network(network_input_notes, n_vocab_notes, network_input_offsets, n_
 	
 	# Branch of the network that considers note duration
 	inputDurationsLayer = Input(shape=(network_input_durations.shape[1], network_input_durations.shape[2]))
-	inputDurations = CuDNNLSTM(
+	inputDurations = LSTM(
 		256,
 		input_shape=(network_input_durations.shape[1], network_input_durations.shape[2]),
 		return_sequences=True
@@ -167,9 +165,9 @@ def create_network(network_input_notes, n_vocab_notes, network_input_offsets, n_
 	inputs = concatenate([inputNotes, inputOffsets, inputDurations])
 	
 	# A cheeky LSTM to consider everything learnt from the three separate branches
-	x = CuDNNLSTM(512, return_sequences=True)(inputs)
+	x = LSTM(512, return_sequences=True)(inputs)
 	x = Dropout(0.3)(x)
-	x = CuDNNLSTM(512)(x)
+	x = LSTM(512)(x)
 	x = BatchNorm()(x)
 	x = Dropout(0.3)(x)
 	x = Dense(256, activation='relu')(x)
@@ -218,8 +216,8 @@ def train(model, network_input_notes, network_input_offsets, network_input_durat
 	)
 	callbacks_list = [checkpoint]
 
-	model.fit([network_input_notes, network_input_offsets, network_input_durations], [network_output_notes, network_output_offsets, network_output_durations], epochs=200, batch_size=256, callbacks=callbacks_list, verbose=1)
+	model.fit([network_input_notes, network_input_offsets, network_input_durations], [network_output_notes, network_output_offsets, network_output_durations], epochs=1000, batch_size=64, callbacks=callbacks_list, verbose=1)
 
 if __name__ == '__main__':
-	#weights_name = 'my_weights_file.hdf5'
+	#weights_name = 'weights-improvement-41-0.9199-bigger.hdf5'
 	train_network()
