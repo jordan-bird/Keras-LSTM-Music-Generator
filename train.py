@@ -1,5 +1,4 @@
-""" This module prepares midi file data and feeds it to the neural
-	network for training """
+""" TF2 support by compatibility """
 import glob
 import pickle
 import numpy
