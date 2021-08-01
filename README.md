@@ -42,6 +42,9 @@ Since most midis are multi-track (eg. 2x piano, left and right hand), and this m
 
 Change line 53 in train.py to specify where your .midi files are stored
 
+# TensorFlow 2.0
+To run with TensorFlow 2.0 use lstm-new-tf2.py
+
 # To Do
 I need to see what happens when the offset and duration problems are regression with MSE. Currently, we do classification of a library of classes (ie. unique offsets and durations) detected from the dataset during Midi parsing
 
