@@ -5,8 +5,11 @@ from collections import defaultdict
 from mido import Message, MidiFile, MidiTrack, merge_tracks
 import os
 
-directory = 'classical-piano'
+directory = 'videogame-music'
 directoryNew = directory + '-type0/'
+
+if not os.path.exists(directoryNew):
+    os.makedirs(directoryNew)
 
 for filename in os.listdir(directory):
 	if filename.endswith(".mid"):
